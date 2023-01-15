@@ -53,13 +53,41 @@ function g(θ_threshold)
     F_to_n(x) = F(x)^n
     F_to_n_minus_1(x) = F(x)^(n-1) 
     S(θ_threshold), _ = quadgk(F_to_n_minus_1, 0, θ_threshold, rtol = 1e-8)
-    return S(1) - quadgk(F_to_n, θ_threshold, 1, rtol = 1e-8)[1] - (2n - (1 - θ_threshold)) * S(θ_threshold) / (n - 1)
+    return S(1) - quadgk(F_to_n, θ_threshold, 1, rtol = 1e-8)[1] - (2n - (1 - F(θ_threshold)) ) * S(θ_threshold) / (n - 1)
 end
 
+function h(θ_threshold)
+    F(x) = x
+    n = 8
+    F_to_n(x) = F(x)^n
+    F_to_n_minus_1(x) = F(x)^(n-1) 
+    S(θ_threshold), _ = quadgk(F_to_n_minus_1, 0, θ_threshold, rtol = 1e-8)
+    return S(1) - S(θ_threshold) - quadgk(F_to_n, θ_threshold, 1, rtol = 1e-8)[1] - (2 + (n - 1) * (1 - F(θ_threshold)) ) * S(θ_threshold) / (n - 1)
+end
+
+function q(θ_threshold)
+    F(x) = x
+    n = 8
+    F_to_n(x) = F(x)^n
+    F_to_n_minus_1(x) = F(x)^(n-1) 
+    S(θ_threshold), _ = quadgk(F_to_n_minus_1, 0, θ_threshold, rtol = 1e-8)
+    return S(1) - S(θ_threshold) - quadgk(F_to_n, θ_threshold, 1, rtol = 1e-8)[1] - (1 + n) * S(θ_threshold) / (n - 1)
+end
+
+
+
+
 # Column vector of the number of honest bidders to iterate through and plot.
-X = 1:150
+X = 1:100
 X = X ./ 100
 
 # Plotting the total expected tip and an upper bound of it.
-plot(g, X, label = "g(θ_threshold)")
+plot(X, [g, h, q], labels = ["g(θ_threshold" "h(θ_threshold)" "q(θ_threshold)"])
+
+#n = 8
+#F(x) = x
+#F_to_n_minus_1(x) = F(x)^(n-1) 
+#S(x) = quadgk(F_to_n_minus_1, 0, x, rtol = 1e-8)[1]
+#plot(S, X, label = "S(x)")
+
 #plot(X, [X .* map(expected_tip̂, X)], lw = [3, 3], labels = ["nE[t]" "1 / ((n-1) * sqrt(n))"], title = "Expected Total Tip")

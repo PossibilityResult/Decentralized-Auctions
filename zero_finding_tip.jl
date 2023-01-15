@@ -35,7 +35,6 @@ end
 
 # --- PLOTTING THE EXPECTED TOTAL AMOUNT TIPPED AND UPPER BOUND ---
 
-
 # Column vector of the number of honest bidders to iterate through and plot.
 X = 1:100
 
@@ -43,4 +42,11 @@ X = 1:100
 s(n) = 1 / ((n - 1) * sqrt(n))
 
 # Plotting the total expected tip and an upper bound of it.
-plot(X, [X .* map(expected_tip, X), map(s, X)], lw = [3, 3], labels = ["nE[t]" "1 / ((n-1) * sqrt(n))"], title = "Expected Total Tip and Upper Bound")
+#plot(X, [X .* map(expected_tip, X), map(s, X)], lw = [3, 3], labels = ["nE[t]" "1 / ((n-1) * sqrt(n))"], title = "Expected Total Tip and Upper Bound")
+
+function h(c)
+    I, est = quadgk(t̂(c, 8), 0, 1, rtol = 1e-8)
+    return I - c
+end
+
+plot(h, X, label = "h(θ_threshold)")
