@@ -66,9 +66,6 @@ function h(θ_threshold)
 end
 
 
-
-
-
 # Column vector of the number of honest bidders to iterate through and plot.
 X = 1:100
 X = X ./ 100
