@@ -68,7 +68,9 @@ plot(
     ],
     lw = 3, 
     labels = ["α = .5, β = .5" "α = 5, β = 1" "α = 1, β = 3" "α = 2, β = 2" "α = 2, β = 5"],
-    title = "Expected Total Tip"
+    title = "Expected Total Tip",
+    xlabel = "# of Bidders",
+    xlims = (0, 100)
 )
 
 savefig("tip_plot_general")
@@ -87,7 +89,10 @@ plot(
         map(x -> f(x, 2, 5), X)], 
     lw = 3, 
     labels = ["α = .5, β = .5" "α = 5, β = 1" "α = 1, β = 3" "α = 2, β = 2" "α = 2, β = 5"], 
-    title = "Beta Distribution PDFs"
+    title = "Beta Distribution PDFs",
+    xlabel = "Value",
+    xlims = (0, 1), 
+    ylims = (0, 2.5)
 )
 
 savefig("beta_functions_general")
