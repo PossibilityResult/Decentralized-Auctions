@@ -48,3 +48,4 @@ s(n) = 1 / ((n - 1) * sqrt(n))
 
 # Plotting the total expected tip and an upper bound of it.
 plot(X, [X .* map(expected_tip, X), map(s, X)], lw = [3, 3], labels = ["nE[t]" "1 / ((n-1) * sqrt(n))"], title = "Expected Total Tip and Upper Bound")
+
