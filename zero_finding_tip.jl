@@ -30,14 +30,6 @@ function expected_tip(n)
     return find_zero(g, (0, 1), Bisection())
 end
 
-
-function g(c)
-    I, est = quadgk(t̂(c, n), 0, 1, rtol = 1e-8)
-    return I - c
-end
-
-print(find_zero(g, (0, 1), Bisection()))
-
 # --- PLOTTING THE EXPECTED TOTAL AMOUNT TIPPED AND UPPER BOUND ---
 
 # Column vector of the number of honest bidders to iterate through and plot.
