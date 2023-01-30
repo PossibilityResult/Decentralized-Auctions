@@ -1,3 +1,3 @@
 # Decentralized-Auctions
 
-Simulations for Towards 'Censorship Proof Auctions'
+Simulations for "Censorship Resistance in On-Chain Auctions"
