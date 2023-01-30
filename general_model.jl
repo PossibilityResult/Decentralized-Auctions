@@ -53,6 +53,7 @@ function f(x, α, β)
     return x^(α - 1) * (1 - x)^(β - 1) / B(α, β)
 end
 
+Plots.theme(:dark)
 
 # Need to make sure this is at least 2
 X = 2:100
